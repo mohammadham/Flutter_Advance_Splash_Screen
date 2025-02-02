@@ -1,6 +1,6 @@
 # my_splash_screen
 
-A Simple Flutter project For Changing Flutter Splash And show after that my own Splash befor run app  .
+A simple Flutter project to modify Flutter Splash and then show my own Splash before running the app.
 
 ## Getting Started
 
