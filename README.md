@@ -1,16 +1,34 @@
 # my_splash_screen
 
-A new Flutter project.
+A Simple Flutter project For Changing Flutter Splash And show after that my own Splash befor run app  .
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ * run pub to get packages
+```bash
+flutter pub get
+```
+ * edit pubspec.yaml file for change splash image:
+ ```bash
+ flutter_native_splash:
+  color: "#ffffff"
+  image: "assets/splash_image.png"
+  android: true
+  ios: true
+  web: true
+```
+ * run to set splash image edited to using default splash image 
+```bash
+flutter pub run flutter_native_splash:create
+```
+## Change Advance Splash Files
+ * add splash image/gif/lottie/video to assets folder
+ * edit splash settings in config file
+ ```bash
+ //logo motion for naviagtion
+const String LOGO_MOTION_LOTTIE = 'assets/gifs/data.json';
+const String LOGO_MOTION_GIF = 'assets/gifs/loading.gif';
+const String LOGO_MOTION_IMAGE = 'assets/gifs/loading.png';
+const String LOGO_MOTION_VIDEO = 'assets/gifs/loading.mp4';
+const String LOGO_MOTION = 'assets/gifs/loading.gif';
+```

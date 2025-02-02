@@ -1,7 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:my_splash_screen/splash/splash_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure initialization
+  // Preserve native splash screen
+  FlutterNativeSplash.preserve(
+      widgetsBinding: WidgetsFlutterBinding.ensureInitialized());
+
+  runApp(const AppWrapper());
+}
+
+class AppWrapper extends StatelessWidget {
+  const AppWrapper({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Mohammad Ah Splash Screen',
+      debugShowCheckedModeBanner: false,
+      home: const SplashWrapper(),
+      routes: {
+        '/sphome': (context) => const MyApp(),
+      },
+    );
+  }
+}
+
+class SplashWrapper extends StatefulWidget {
+  const SplashWrapper({super.key});
+
+  @override
+  _SplashWrapperState createState() => _SplashWrapperState();
+}
+
+class _SplashWrapperState extends State<SplashWrapper> {
+  @override
+  void initState() {
+    super.initState();
+    // Remove native splash when our custom splash starts
+    FlutterNativeSplash.remove();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const SplashScreen(
+      typeOfSplashScreen: CustomSplashScreenType.lottie,
+      splashTimeout: 3,
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +58,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Mohammad Ah Splash Screen',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -31,7 +78,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Mohammad Ah Splash Screen'),
     );
   }
 }
